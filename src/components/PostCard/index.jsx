@@ -5,6 +5,8 @@ import Button from "@mui/material/Button";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import CommentIcon from "@mui/icons-material/Comment";
 import Avatar from "@mui/material/Avatar";
+import Chip from '@mui/material/Chip';
+
 
 const ProfileCard = ({}) => {
   //   console.log(data);
@@ -21,12 +23,11 @@ const ProfileCard = ({}) => {
 
   return (
     <>
-      <div className="flex gap-4 w-full border-b-2  border-inherit rounded-xl justify-center px-[10px] py-[20px] font-sans">
+      <div className="flex gap-4 w-full border-b-2  border-inherit rounded-xl justify-center px-[20px] py-[40px] font-sans cursor-pointer">
         {/* contents */}
         <div className=" flex gap-[48px] ">
           <div className="flex flex-col gap-[24px] w-[70%]">
             <div className="flex flex-col gap-4">
-
            
             <div className="flex gap-[11px] items-center">
               {/* <div className="flex gap-2"> */}
@@ -70,9 +71,10 @@ const ProfileCard = ({}) => {
               </div>
             </div>
             <div className="flex  flex-col gap-[24px]">
-              <div className="bg-[#EEE] py-0 px-[20px] rounded-lg  max-w-max ">
+              {/* <div className="bg-[#EEE] py-0 px-[20px] rounded-lg  max-w-max ">
                 <h2 className="font-semibold text-[16px] text-[#212121]">UX/UI Design</h2>
-              </div>
+              </div> */}
+              <Chip className="w-[18%]" label="UX/UI Design"/>
               <div className="flex gap-[6px] ">
                 <div onClick={handleLike} className="">
                   <FavoriteBorderIcon style={{color:757575}} />
