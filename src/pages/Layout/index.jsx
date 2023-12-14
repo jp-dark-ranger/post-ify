@@ -13,36 +13,32 @@ const Layout = () => {
   const [cards, setCards] = useState([1, 2, 3, 4, 5, 6, 7, 8, 9])
   return (
     <div>
-      
-        {/* <Header /> */}
-        <div className='w-full flex justify-center'>
-          <div className='w-[60%] h-full flex justify-center'>
-            <div className='w-[80%] flex flex-col gap-2 '>
-              {/* <PostCard/>
+      <div className='w-full flex'>
+        <div className='w-[70%] h-full flex '>
+          <div className='flex flex-col gap-2 '>
+            {/* <PostCard/>
                <PostCard/> */}
-              {cards.map(res => {
-                return (
-                  <PostCard  />
-                )
-              })}
-            </div>
-          </div>
-          <div className='w-[30%]'>
-            {/* <div className='w-[328px]'>
-              <Select sx={{ width: 328 }}>
-                <MenuItem>
-
-                  <Checkbox />
-                  <ListItemText />
-                </MenuItem>
-
-              </Select>
-
-            </div> */}
-            <ProfileCard/>
-            <FilterSection/>
+            {cards.map(res => {
+              return (
+                <PostCard />
+              )
+            })}
           </div>
         </div>
+        <div className='w-[30%]  justify-center flex'>
+          
+          {/* <div className='w-full'> */}
+            {/* <Select>
+              <MenuItem>
+
+                <Checkbox />
+                <ListItemText />
+              </MenuItem>
+            </Select> */}
+          {/* </div> */}
+          <ProfileCard/>
+        </div>
+      </div>
     </div>
 
   )
