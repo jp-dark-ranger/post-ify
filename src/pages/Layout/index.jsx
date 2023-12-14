@@ -6,6 +6,7 @@ import Select from '@mui/material/Select';
 import ListItemText from '@mui/material/ListItemText';
 import ProfileCard from '../../components/ProfileCard'
 import Header from './../../components/Header/Header';
+import FilterSection from '../../components/FilterSection';
 
 const Layout = () => {
 
@@ -27,7 +28,7 @@ const Layout = () => {
             </div>
           </div>
           <div className='w-[30%]'>
-            <div className='w-[328px]'>
+            {/* <div className='w-[328px]'>
               <Select sx={{ width: 328 }}>
                 <MenuItem>
 
@@ -37,8 +38,9 @@ const Layout = () => {
 
               </Select>
 
-            </div>
-            {/* <ProfileCard/> */}
+            </div> */}
+            <ProfileCard/>
+            <FilterSection/>
           </div>
         </div>
     </div>
