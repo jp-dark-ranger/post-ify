@@ -21,7 +21,7 @@ const FilterSection = () => {
             <p>Filter</p>
           </div>
         </div>
-        <div className="p">
+        <div className="">
             <p className="text-[16px] text-[#424242] font-semibold">Selected Filters</p>
         </div>
         <div className="bg-[#FFF] w-[100%] rounded-[20px] h-max border-2">

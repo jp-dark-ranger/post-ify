@@ -36,7 +36,8 @@ const Layout = () => {
               </MenuItem>
             </Select> */}
           {/* </div> */}
-          <ProfileCard/>
+          {/* <ProfileCard/> */}
+          <FilterSection/>
         </div>
       </div>
     </div>
