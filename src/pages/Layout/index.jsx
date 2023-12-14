@@ -12,9 +12,7 @@ const Layout = () => {
   const [cards, setCards] = useState([1, 2, 3, 4, 5, 6, 7, 8, 9])
   return (
     <div>
-      
-        {/* <Header /> */}
-        <div className='w-full flex justify-center'>
+        <div className='w-full flex'>
           <div className='w-[60%] h-full flex justify-center'>
             <div className='w-[80%] flex flex-col gap-2 '>
               {/* <PostCard/>
