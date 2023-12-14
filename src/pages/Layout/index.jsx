@@ -1,27 +1,23 @@
-import React, { useState } from 'react'
-import PostCard from '../../components/PostCard';
-import Checkbox from '@mui/material/Checkbox';
-import MenuItem from '@mui/material/MenuItem';
-import Select from '@mui/material/Select';
-import ListItemText from '@mui/material/ListItemText';
-import ProfileCard from '../../components/ProfileCard'
-import Header from './../../components/Header/Header';
-import FilterSection from '../../components/FilterSection';
+import React, { useState } from "react";
+import PostCard from "../../components/PostCard";
+import Checkbox from "@mui/material/Checkbox";
+import MenuItem from "@mui/material/MenuItem";
+import Select from "@mui/material/Select";
+import ListItemText from "@mui/material/ListItemText";
+import ProfileCard from "../../components/ProfileCard";
+import FilterSection from "../../components/FilterSection";
 
 const Layout = () => {
-
-  const [cards, setCards] = useState([1, 2, 3, 4, 5, 6, 7, 8, 9])
+  const [cards, setCards] = useState([1, 2, 3, 4, 5, 6, 7, 8, 9]);
   return (
     <div>
-      <div className='w-full flex' >
+      <div className="w-full flex">
         <div className='w-[70%] flex  "bg-local h-[880px] flex-wrap overflow-auto'>
-          <div className='flex flex-col gap-2 '>
+          <div className="flex flex-col gap-2 ">
             {/* <PostCard/>
                <PostCard/> */}
-            {cards.map(res => {
-              return (
-                <PostCard />
-              )
+            {cards.map((res) => {
+              return <PostCard />;
             })}
           </div>
         </div>
@@ -31,8 +27,7 @@ const Layout = () => {
         </div>
       </div>
     </div>
+  );
+};
 
-  )
-}
-
-export default Layout
+export default Layout;
