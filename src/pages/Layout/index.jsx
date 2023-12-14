@@ -6,6 +6,7 @@ import Select from '@mui/material/Select';
 import ListItemText from '@mui/material/ListItemText';
 import ProfileCard from '../../components/ProfileCard'
 import Header from './../../components/Header/Header';
+import FilterSection from '../../components/FilterSection';
 
 const Layout = () => {
 

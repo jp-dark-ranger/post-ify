@@ -1,15 +1,24 @@
-import React from 'react';
- 
+import React from "react";
+import EditIcon from "@mui/icons-material/Edit";
+
 const ProfileCard = () => {
-    return (
-      <div className="flex flex-col items-center p-4 bg-[#F9F9F9] text-white rounded-lg h-full w-full shadow-md  " >
-        <div className="flex items-center justify-center bg-blue-600 text-white border border-white  rounded-full h-12 w-12 mb-2">
-          <span className="text-xl  bg-blue-600   text-white font-semibold">T</span>
-        </div>
-        <h2 className="text-lg  text-black font-semibold">Devineniteja</h2>
-        <button className=" text-sm text-black  ">deXXXXX@gmail.com</button>
-      </div>
-    );
-  };
+  return (
  
-  export default ProfileCard;
+    <div className="flex flex-col gap-3  items-center bg-[#F9F9F9] w-full h-full">
+      <div className="bg-[#606060] mt-[69px] rounded-[80px] w-[120px] h-[120px] flex justify-center items-center">
+        <h1 className="text-[#FFF] flex justify-center items-center my-auto">
+          H
+        </h1>
+      </div>
+
+      <div className="inline-flex gap-2 flex-col justify-center items-center">
+       <p className="text-[36px] leading-5 font-normal ">Harish</p>
+       <p className="text-[16px] leading-5 font-normal">harishvishal@gmail.com</p>
+       <p><a href="">Edit Profile</a></p>
+
+      </div>
+    </div>
+  );
+};
+
+export default ProfileCard;
