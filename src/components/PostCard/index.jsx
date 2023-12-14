@@ -23,7 +23,7 @@ const ProfileCard = ({}) => {
 
   return (
     <>
-      <div className="flex gap-4 w-full border-b-2  border-inherit rounded-xl justify-center px-[20px] py-[40px] font-sans">
+      <div className="flex gap-4 w-full border-b-2  border-inherit rounded-xl justify-center px-[20px] py-[40px] font-sans cursor-pointer">
         {/* contents */}
         <div className=" flex gap-[48px] ">
           <div className="flex flex-col gap-[24px] w-[70%]">
