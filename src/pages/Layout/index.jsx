@@ -21,8 +21,8 @@ const Layout = () => {
             })}
           </div>
         </div>
-        <div className='w-[30%]  justify-center flex'>
-          <FilterSection/>
+        <div className="w-[30%]  justify-center flex">
+          <FilterSection />
           {/* <ProfileCard/> */}
         </div>
       </div>
