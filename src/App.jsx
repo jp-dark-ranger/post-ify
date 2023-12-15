@@ -7,6 +7,9 @@ import Form from "./pages/Form";
 import { useSelector } from "react-redux";
 import { app } from "./firebase/config";
 import NotFound from "./pages/NotFound";
+import Profile from "./pages/Profile/profile";
+
+
 
 function App() {
   const uid = useSelector((state) => state.authReducer.uid);
