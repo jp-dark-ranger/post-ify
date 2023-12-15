@@ -15,6 +15,7 @@ import Typography from '@mui/material/Typography';
 import { BorderAll } from "@mui/icons-material";
 import sample from '../../assets/images/sample.jpg'
 import Select from "react-select";
+import { useSelector } from "react-redux";
 
 const style = {
   position: 'absolute',
@@ -45,6 +46,7 @@ const Header = () => {
   const navigate = useNavigate()
   const location = useLocation();
   const [isPublishModal, setIsPublishModal] = useState(false)
+  const name = useSelector(state=>state?.authReducer?.name) || "H"
 
 
 
@@ -78,7 +80,7 @@ const Header = () => {
 
         <NotificationsNoneIcon sx={{ height: 36, width: 36 }} />
         <div className=" pl-[15px] pr-3.5 py-1.5 rounded-full border-2 border-black bg-[#54006D] justify-center items-center cursor-pointer" onClick={() => navigateToProfile()}>
-          <p className="text-white text-2xl not-italic font-bold leading-[150%] cursor-pointer" >H</p>
+          <p className="text-white text-2xl not-italic font-bold leading-[150%] cursor-pointer" >{name}</p>
         </div>
       </div>
       <Modal
