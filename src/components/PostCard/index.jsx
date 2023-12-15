@@ -31,7 +31,7 @@ const ProfileCard = ({}) => {
 
   return (
     <>
-      <div className="flex relative gap-4 w-full border-b-2 
+      <div className="flex gap-4 w-full border-b-2 
        border-inherit rounded-xl justify-center px-[20px] py-[40px] font-sans relative" onClick={()=>{
         setEdit(false)
        }}>
