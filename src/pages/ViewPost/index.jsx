@@ -9,7 +9,7 @@ const mockData = {
   comment: 12000,
 };
 
-const DEFAULT_INITIAL_DATA = {
+export const DEFAULT_INITIAL_DATA = {
   time: new Date().getTime(),
   // blocks: [
   //   {

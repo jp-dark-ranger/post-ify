@@ -5,6 +5,7 @@ import ImageTool from "@editorjs/image";
 import CodeTool from "@editorjs/code";
 import LinkTool from "@editorjs/link";
 import Embed from "@editorjs/embed";
+import { DEFAULT_INITIAL_DATA } from './../../pages/ViewPost/index';
 
 const emptyData = {
   time: new Date().getTime(),
@@ -22,7 +23,7 @@ const Editor = ({ readOnly = false, handleChange, data }) => {
       },
       readOnly: readOnly,
       autofocus: true,
-      data: data && Object.keys(data).length ? data : emptyData,
+      data: data && Object.keys(data).length ? data : readOnly? DEFAULT_INITIAL_DATA : emptyData,
       onChange: async () => {
         let content = await editor.saver.save();
         // console.log(content);
