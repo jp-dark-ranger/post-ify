@@ -6,10 +6,12 @@ import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import CommentIcon from "@mui/icons-material/Comment";
 import Avatar from "@mui/material/Avatar";
 import Chip from '@mui/material/Chip';
+import {useNavigate} from 'react-router-dom'
 
 
 const ProfileCard = ({}) => {
   //   console.log(data);
+  const navigate = useNavigate()
   const handleLike = () => {
     console.log("like clicked works");
   };
@@ -21,9 +23,14 @@ const ProfileCard = ({}) => {
     console.log("The Whole Div  ");
   };
 
+  const navigateToViewPage = (id) => {
+    navigate('/view-post/'+ id)
+    // navigate('/form?flag=edit')
+  }
+
   return (
     <>
-      <div className="flex gap-4 w-full border-b-2  border-inherit rounded-xl justify-center px-[20px] py-[40px] font-sans cursor-pointer">
+      <div className="flex gap-4 w-full border-b-2  border-inherit rounded-xl justify-center px-[20px] py-[40px] font-sans cursor-pointer" onClick={()=>navigateToViewPage(1)}>
         {/* contents */}
         <div className=" flex gap-[48px] ">
           <div className="flex flex-col gap-[24px] w-[70%]">

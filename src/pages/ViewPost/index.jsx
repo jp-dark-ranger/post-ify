@@ -48,9 +48,9 @@ const DEFAULT_INITIAL_DATA = {
 
 const ViewPost = () => {
   return (
-    <div className="flex justify-center py-10">
+    <div className="flex justify-center h-full">
       <div className="w-full flex flex-col max-w-5xl gap-10">
-        <h1 className="font-sans">
+        <h1 className="font-sans  text-black text-5xl not-italic font-bold leading-[150%] tracking-[0.96px]">
           The Ancient and Modern Wonders of Solo Travel in Tokyo
         </h1>
         <div className="flex gap-3 items-center">

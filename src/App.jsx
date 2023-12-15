@@ -26,6 +26,7 @@ function App() {
             <Route path="/" element={<Layout />} />
             <Route path="/view-post/:id" element={<ViewPost />} />
             <Route path="/form" element={<Form />} />
+            <Route path="/Profile" element={<Profile/>} />
             <Route path="/login" element={<Login />} />
             <Route path="/*" element={<NotFound />} />
           </Routes>
