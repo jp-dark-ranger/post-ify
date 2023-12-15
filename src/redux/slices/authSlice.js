@@ -34,6 +34,12 @@ const authSlice = createSlice({
     logout: (state) => {
       state.isLoggedIn = false;
       state.uid = "";
+      state.email = '';
+      state.name = '';
+      // Clear other relevant authentication state upon logout
+    },
+    setName: (state,action) => {
+      state.name = action.payload;
       // Clear other relevant authentication state upon logout
     },
   },
@@ -44,5 +50,5 @@ const authSlice = createSlice({
   },
 });
 
-export const { login, logout } = authSlice.actions;
+export const { login, logout,setName } = authSlice.actions;
 export default authSlice.reducer;

@@ -72,7 +72,13 @@ const Login = () => {
         const user = userCredential.user;
         console.log("user", user);
         if (user) {
-          dispatch(login(user.uid));
+          dispatch(
+          login({
+            uid: user.uid,
+            name: user.email.split("@").at(0),
+            email: user.email,
+          })
+        );
           navigate("/");
         }
         setMessage("Registered successfully");
@@ -93,6 +99,13 @@ const Login = () => {
       .then((userCredential) => {
         // Signed up
         const user = userCredential.user;
+        dispatch(
+          login({
+            uid: user.uid,
+            name: user.email.split("@").at(0),
+            email: user.email,
+          })
+        );
         setMessage("Registered successfully");
         setShowSnackBar(true);
         navigate("/");

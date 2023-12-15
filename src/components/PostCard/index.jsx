@@ -21,10 +21,12 @@ import Box from "@mui/material/Box";
 // import Button from '@mui/material/Button';
 import Typography from "@mui/material/Typography";
 import Modal from "@mui/material/Modal";
+import {useLocation} from 'react-router-dom'
 
 const ProfileCard = ({}) => {
   const [edit, setEdit] = useState(false);
   const [isDeleteModal, setisDeleteModal] = useState(false);
+  const {pathname} = useLocation()
   const handleDeleteClose = () => {
     setisDeleteModal(false);
   };
@@ -74,18 +76,17 @@ const ProfileCard = ({}) => {
     navigate('/view-post/'+ id)
     // navigate('/form?flag=edit')
   }
-
   return (
     <>
       <div className="flex gap-4 w-full border-b-2  border-inherit rounded-xl justify-center px-[20px] py-[40px] font-sans cursor-pointer relative" onClick={()=>navigateToViewPage(1)}>
         {/* contents */}
-        <MoreVertIcon
+       { pathname === '/profile' && <MoreVertIcon
           className="absolute top-[16px] right-[22px]  cursor-pointer"
           onClick={(e) => { 
             e.stopPropagation();
             setEdit(!edit);
           }}
-        />
+        />}
         {edit && edit ? (
           <div
             className=" absolute top[0px] right[22px] w-[200px] rounded-[4px]

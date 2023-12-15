@@ -101,9 +101,9 @@ const Header = () => {
           className=" pl-[15px] pr-3.5 py-1.5 rounded-full border-2 border-black bg-[#54006D] justify-center items-center cursor-pointer"
           onClick={() => navigateToProfile()}
         >
-          <p className="text-white text-2xl not-italic font-bold leading-[150%] cursor-pointer">
+          <div className="text-white text-2xl not-italic font-bold leading-[150%] cursor-pointer aspect-square">
             {name[0].toUpperCase()}
-          </p>
+          </div>
         </div>
       </div>
       <Modal
