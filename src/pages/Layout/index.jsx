@@ -21,17 +21,9 @@ const Layout = () => {
             })}
           </div>
         </div>
-        <div className="w-[30%]  justify-center flex">
-          {/* <div className='w-full'> */}
-          {/* <Select>
-              <MenuItem>
-
-                <Checkbox />
-                <ListItemText />
-              </MenuItem>
-            </Select> */}
-          {/* </div> */}
-          <ProfileCard />
+        <div className='w-[30%]  justify-center flex'>
+          <FilterSection/>
+          {/* <ProfileCard/> */}
         </div>
       </div>
     </div>
