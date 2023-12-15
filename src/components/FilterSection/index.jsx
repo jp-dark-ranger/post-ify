@@ -107,7 +107,7 @@ const FilterSection = () => {
           </div>
 
         </div>
-        <div style={{ display: 'flex', width: '100%', flexDirection: 'column', gap: '8px', marginTop: '16px' }}>
+        {/* <div style={{ display: 'flex', width: '100%', flexDirection: 'column', gap: '8px', marginTop: '16px' }}>
           <div style={{
             display: 'flex', padding: '16px 20px 16px 16px', backgroundColor: 'white', height: ' fit-content', justifyContent: 'center',
             alignItems: 'center',
@@ -133,7 +133,7 @@ const FilterSection = () => {
             </FormGroup>
           </div>
 
-        </div>
+        </div> */}
 
       </div>
     </div>

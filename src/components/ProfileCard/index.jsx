@@ -30,7 +30,6 @@ const ProfileCard = () => {
   
   };
 
-  console.log('user u1 : ',user);
 
   return (
     <div className="flex flex-col gap-3  items-center bg-[#F9F9F9] w-full h-full">
