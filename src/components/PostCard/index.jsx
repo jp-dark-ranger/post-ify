@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-import { useOnClickOutside } from "usehooks-ts";
+// import { useOnClickOutside } from "usehooks-ts";
 import CloseIcon from "@mui/icons-material/Close";
 
 import sampleImg from "../../assets/images/sample.jpg";
@@ -19,6 +19,7 @@ import Box from "@mui/material/Box";
 // import Button from '@mui/material/Button';
 import Typography from "@mui/material/Typography";
 import Modal from "@mui/material/Modal";
+import { useNavigate } from "react-router-dom";
 
 const ProfileCard = ({}) => {
   
@@ -60,13 +61,18 @@ const ProfileCard = ({}) => {
     width: 760,
     height: 428,
     bgcolor: "background.paper",
-    border: "2px solid #000",
+    // border: "2px solid #000",
     boxShadow: 24,
     p: 4,
     borderRadius:6
   };
 
   const [edit, setEdit] = useState(false);
+  const navigate = useNavigate()
+
+  const handleEdit = ()=>{
+    navigate('/form?flag=edit')
+  }
 
   return (
     <>
@@ -96,6 +102,7 @@ const ProfileCard = ({}) => {
              border-[#424242]"
               style={{ color: "#424242", borderWidth: 1, border: "#424242" }}
               variant="outlined"
+              onClick={handleEdit}
             >
               Edit
             </Button>
@@ -244,7 +251,7 @@ const ProfileCard = ({}) => {
                         textTransform: "capitalize",
                       }}
                       variant="outlined"
-                      onClick={handleClose}
+                      onClick={handleDeleteClose}
                     >
                       Cancel
                     </Button>
