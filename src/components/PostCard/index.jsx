@@ -72,8 +72,9 @@ const ProfileCard = ({}) => {
   }
 
   const navigateToViewPage = (id,e) => {
-    e.stopPropagation()
-    navigate('/view-post/'+ id)
+    navigate('/view-post/' + id)
+        e.stopPropagation()
+
     // navigate('/form?flag=edit')
   }
   return (
