@@ -7,6 +7,7 @@ import Form from "./pages/Form";
 import { useSelector } from "react-redux";
 import { app } from "./firebase/config";
 import NotFound from "./pages/NotFound";
+import Profile from "./pages/Profile/profile";
 
 function App() {
   const uid = useSelector((state) => state.authReducer.uid);
@@ -26,7 +27,7 @@ function App() {
             <Route path="/" element={<Layout />} />
             <Route path="/view-post/:id" element={<ViewPost />} />
             <Route path="/form" element={<Form />} />
-            <Route path="/Profile" element={<Profile/>} />
+            <Route path="/Profile" element={<Profile />} />
             <Route path="/login" element={<Login />} />
             <Route path="/*" element={<NotFound />} />
           </Routes>
