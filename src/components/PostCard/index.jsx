@@ -26,7 +26,7 @@ import Typography from "@mui/material/Typography";
 import Modal from "@mui/material/Modal";
 import { useLocation } from 'react-router-dom'
 
-const ProfileCard = ({ }) => {
+const ProfileCard = ({title="" , date="" , description=""  , department="" , username="jp"}) => {
   const [edit, setEdit] = useState(false);
   const [isDeleteModal, setisDeleteModal] = useState(false);
   const { pathname } = useLocation()
@@ -147,46 +147,37 @@ const ProfileCard = ({ }) => {
                 </div>
                 <div>
                   <h2 className="text-base font-semibold font-sans text-[#424242]">
-                    Surendran
+                    {username}
                   </h2>
                 </div>
                 {/* </div> */}
 
                 <div>
-                  <p className="text-[#616161]">dates</p>
+                  <p className="text-[#616161]">{new Date().toLocaleDateString('en-us', { weekday:"long", year:"numeric", month:"short", day:"numeric"}) }</p>
                 </div>
               </div>
               <div className="flex flex-col gap-2">
                 <div>
                   <h1 className="text-[24px] font-bold leading-[24px] text-[#000]">
-                    Advice From a Software Engineer With 8 Years of Experience
+                    {title}
                   </h1>
                 </div>
                 <div>
                   <p className="line-clamp-2 font-normal text-[16px] leading-[22px] tracking-[0.4px] text-[#000]">
-                    My name is Benoit. I have been a software engineer for the
-                    past eight and a half years. I stayed at my previous (and
-                    first) company for seven and a half years, then I joined a
-                    new
-                    {/* one in early 2022. This article comes from a recent */}
-                    self-reflection on the things I wish I had started doing
-                    earlier in my career and the things I wish I had done
-                    differently. What I am sharing here may be useful to any
-                    junior to mid-level developer who wishes to improve and
-                    progress toward the title of senior and beyond.
+                    {description}
                   </p>
                 </div>
               </div>
             </div>
-            <div className="flex  flex-col gap-[24px]">
+            <div className="flex gap-[24px]">
               {/* <div className="bg-[#EEE] py-0 px-[20px] rounded-lg  max-w-max ">
                 <h2 className="font-semibold text-[16px] text-[#212121]">UX/UI Design</h2>
               </div> */}
-              <Chip className="w-[18%]" label="UX/UI Design" />
+              { department.map(item=> <Chip className="w-[18%]" label={item.label} />)}
               <div className="flex gap-[10px] ">
                 {pathname === '/profile' &&
                   <>
-                  <EditIcon className="absolute top-[16px] right-[22px]  cursor-pointer" onClick={(e) => {e.stopPropagation(); navigate('/form?flag=edit')}}/>
+                  <EditIcon className="absolute top-[16px] right-[22px]  cursor-pointer" onClick={(e) => { e.stopPropagation(); navigate('/form?flag=edit')}}/>
                   <DeleteIcon className="absolute top-[16px] right-[60px]  cursor-pointer" onClick={(e) => { e.stopPropagation(); setisDeleteModal(true)}} />
 
                     {/* <MoreVertIcon
@@ -226,7 +217,7 @@ const ProfileCard = ({ }) => {
               <div className="flex w-full h-full flex-col items-center">
                 <div className="flex w-full justify-end ">
                   <CloseIcon
-                    onClick={handleDeleteClose}
+                    onClick={()=>setisDeleteModal(false)}
                     style={{ margin: "11px 13px 0px 0px", cursor: "pointer" }}
                   />
                 </div>
@@ -257,7 +248,7 @@ const ProfileCard = ({ }) => {
                           textTransform: "capitalize",
                         }}
                         variant="outlined"
-                        onClick={handleDeleteClose}
+                        onClick={()=>setisDeleteModal(false)}
                       >
                         Cancel
                       </Button>

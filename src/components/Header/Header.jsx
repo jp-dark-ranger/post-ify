@@ -102,7 +102,7 @@ const Header = () => {
           onClick={() => navigateToProfile()}
         >
           <div className="text-white text-2xl not-italic font-bold leading-[150%] cursor-pointer aspect-square">
-            {name}
+            {name[0].toUpperCase()}
           </div>
         </div>
       </div>

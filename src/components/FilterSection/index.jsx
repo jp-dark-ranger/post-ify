@@ -11,7 +11,7 @@ import Checkbox from "@mui/material/Checkbox";
 
 //
 
-const FilterSection = () => {
+const FilterSection = ({handleFilter}) => {
 
   const [selected, setSelected] = useState([])
   const [tags, setTags] = useState([{ tag: 'High', color: '#FF6C6C', isChecked: false }, { tag: 'Medium', color: '#FFBC6C', isChecked: false }, { tag: 'Low', color: '#6CFF84', isChecked: false }])
@@ -37,7 +37,9 @@ const FilterSection = () => {
      
     }
   }
-
+  useEffect(() => {
+  handleFilter(selected)
+},[selected])
 
   return (
     <div style={{ display: 'flex', backgroundColor: '#F9F9F9', width: '100%', paddingTop: '24px', paddingLeft: '42px', paddingRight: '42px' }}>
