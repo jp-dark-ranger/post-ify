@@ -48,6 +48,8 @@ const Header = () => {
   const [isPublishModal, setIsPublishModal] = useState(false);
   const blockData = useSelector((state) => state.blogsReducer.postData);
   const dispatch = useDispatch();
+  const name = useSelector((state) => state?.authReducer?.name) || "H";
+
   const handleSelect = (data, name) => {
     setPostData((prev) => ({ ...prev, [name]: data }));
     dispatch(saveDepartments(data));
@@ -100,7 +102,7 @@ const Header = () => {
           onClick={() => navigateToProfile()}
         >
           <p className="text-white text-2xl not-italic font-bold leading-[150%] cursor-pointer">
-            H
+            {name[0].toUpperCase()}
           </p>
         </div>
       </div>

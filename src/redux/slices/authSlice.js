@@ -28,7 +28,7 @@ const authSlice = createSlice({
       state.isLoggedIn = true;
       state.uid = action.payload.uid;
       state.email = action.payload.email;
-      state.name = action.payload.uid;
+      state.name = action.payload.name;
       // Handle other login-related state changes if needed
     },
     logout: (state) => {
