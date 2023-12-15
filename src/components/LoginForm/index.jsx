@@ -1,12 +1,14 @@
 import React, { useState } from "react";
 import { TextField, Button } from "@mui/material";
 import Logo from "../../assets/images/Logo.svg";
+import { useNavigate } from "react-router";
 
-const LoginForm = ({ handleLogin, handleGoogleSignIn }) => {
+const LoginForm = ({ handleLogin, handleGoogleSignIn, handleRegister }) => {
   const [user, setUser] = useState({
     email: "",
     password: "",
   });
+  const navigate = useNavigate();
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -17,6 +19,10 @@ const LoginForm = ({ handleLogin, handleGoogleSignIn }) => {
     event.preventDefault();
     console.log("Button clicked!");
     handleLogin(user.email, user.password);
+  };
+
+  const handleSignUp = () => {
+    handleRegister(user.email, user.password);
   };
 
   return (
@@ -47,7 +53,7 @@ const LoginForm = ({ handleLogin, handleGoogleSignIn }) => {
             onChange={handleChange}
             name="password"
           />
-          <div className="flex justify-center ">
+          <div className="flex justify-between gap-3 items-center">
             <Button
               type="submit"
               variant="contained"
@@ -55,7 +61,16 @@ const LoginForm = ({ handleLogin, handleGoogleSignIn }) => {
               style={{ borderRadius: "48px" }}
               className="bg-purple-600 text-white rounded shadow-lg hover:bg-purple-700"
             >
-              Submit
+              Login
+            </Button>
+            <Button
+              type="button"
+              variant="outlined"
+              onClick={handleSignUp}
+              style={{ borderRadius: "48px" }}
+              className="bg-purple-600 text-white rounded shadow-lg hover:bg-purple-700"
+            >
+              Sign Up
             </Button>
           </div>
           <div className="flex justify-center ">
