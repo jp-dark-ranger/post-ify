@@ -9,7 +9,10 @@ import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import CommentIcon from "@mui/icons-material/Comment";
 import Avatar from "@mui/material/Avatar";
 import Chip from '@mui/material/Chip';
-import {useNavigate} from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
+import DeleteIcon from '@mui/icons-material/Delete';
+import EditIcon from '@mui/icons-material/Edit';
+
 
 import MoreVertIcon from "@mui/icons-material/MoreVert";
 
@@ -21,12 +24,12 @@ import Box from "@mui/material/Box";
 // import Button from '@mui/material/Button';
 import Typography from "@mui/material/Typography";
 import Modal from "@mui/material/Modal";
-import {useLocation} from 'react-router-dom'
+import { useLocation } from 'react-router-dom'
 
-const ProfileCard = ({}) => {
+const ProfileCard = ({ }) => {
   const [edit, setEdit] = useState(false);
   const [isDeleteModal, setisDeleteModal] = useState(false);
-  const {pathname} = useLocation()
+  const { pathname } = useLocation()
   const handleDeleteClose = () => {
     setisDeleteModal(false);
   };
@@ -62,33 +65,36 @@ const ProfileCard = ({}) => {
     // border: "2px solid #000",
     boxShadow: 24,
     p: 4,
-    borderRadius:6
+    borderRadius: 6
   };
 
 
-  const handleEdit = ()=>{
+  const handleEdit = () => {
     setEdit(false)
     navigate('/form?flag=edit')
+    e.preventDefault()
+
   }
 
-  const navigateToViewPage = (id,e) => {
-    navigate('/view-post/' + id)
-        e.stopPropagation()
+  const navigateToViewPage = (id, flag) => {
+    if (flag === 'view') {
+      navigate('/view-post/' + id)
+    } else {
+     setisDeleteModal(true)
+    }
 
-    // navigate('/form?flag=edit')
   }
+
+
   return (
     <>
-      <div className="flex gap-4 w-full border-b-2  border-inherit rounded-xl justify-center px-[20px] py-[40px] font-sans cursor-pointer relative" onClick={()=>navigateToViewPage(1)}>
+      <div className="flex gap-4 w-full border-b-2  border-inherit rounded-xl justify-center px-[20px] py-[40px] font-sans cursor-pointer relative" onClick={(e) => {
+        e.stopPropagation();
+         navigateToViewPage(1, 'view',);
+      }}>
         {/* contents */}
-       { pathname === '/profile' && <MoreVertIcon
-          className="absolute top-[16px] right-[22px]  cursor-pointer"
-          onClick={(e) => { 
-            e.stopPropagation();
-            setEdit(!edit);
-          }}
-        />}
-        {edit && edit ? (
+
+        {/* {edit && edit ? (
           <div
             className=" absolute top[0px] right[22px] w-[200px] rounded-[4px]
           shadow-md bg-[#FFF] inline-flex flex-col gap-0.5 right-[31px] cursor-pointer"
@@ -98,7 +104,7 @@ const ProfileCard = ({}) => {
              border-[#424242]"
               style={{ color: "#424242", borderWidth: 1, border: "#424242" }}
               variant="outlined"
-              onClick={handleEdit}
+              onClick={() => navigateToViewPage(0, 'edit')}
             >
               Edit
             </Button>
@@ -114,9 +120,7 @@ const ProfileCard = ({}) => {
               }}
               variant="outlined"
               onClick={() => {
-                setEdit(false);
-                setOpen(true);
-                setisDeleteModal(true);
+
               }}
             >
               Delete
@@ -125,7 +129,7 @@ const ProfileCard = ({}) => {
           </div>
         ) : (
           ""
-        )}
+        )} */}
 
         <div className=" flex gap-[48px] ">
           <div className="flex flex-col gap-[24px] w-[70%]">
@@ -179,15 +183,21 @@ const ProfileCard = ({}) => {
                 <h2 className="font-semibold text-[16px] text-[#212121]">UX/UI Design</h2>
               </div> */}
               <Chip className="w-[18%]" label="UX/UI Design" />
-              <div className="flex gap-[6px] ">
-                <div onClick={handleLike} className="">
-                  <FavoriteBorderIcon style={{ color: 757575 }} />
-                </div>
-                <div>
-                  <p className="text-[#757575] text-[14px] font-medium leading-[20px] tracking-[0.1px]">
-                    12.k
-                  </p>
-                </div>
+              <div className="flex gap-[10px] ">
+                {pathname === '/profile' &&
+                  <>
+                  <EditIcon className="absolute top-[16px] right-[22px]  cursor-pointer" onClick={(e) => {e.stopPropagation(); navigate('/form?flag=edit')}}/>
+                  <DeleteIcon className="absolute top-[16px] right-[44px]  cursor-pointer" onClick={(e) => { e.stopPropagation(); setisDeleteModal(true)}} />
+
+                    {/* <MoreVertIcon
+          className="absolute top-[16px] right-[22px]  cursor-pointer"
+          onClick={(e) => { 
+            e.stopPropagation();
+            setEdit(!edit);
+          }}
+          />< */}
+                  </>
+                }
               </div>
             </div>
           </div>
@@ -202,10 +212,10 @@ const ProfileCard = ({}) => {
             </div>
           </div>
         </div>
-       
+
 
         <div>
-          
+
           <Modal
             open={isDeleteModal}
             onClose={handleDeleteClose}
@@ -224,51 +234,51 @@ const ProfileCard = ({}) => {
                   <div className="flex flex-col gap-6 justify-center">
                     <div className="flex flex-col gap-4 justify-center">
 
-                    <h3 className="text-[#000] text-[24px] font-bold leading-6 text-center">Delete Story</h3>
-                    <p className="text-[16px] text-[#000] leading-6 font-normal tracking-[0.5px] text-center">
-                      Delete is not reversable and the story will be completely
-                      deleted. If you dont want to delete, you can
-                    </p>
+                      <h3 className="text-[#000] text-[24px] font-bold leading-6 text-center">Delete Story</h3>
+                      <p className="text-[16px] text-[#000] leading-6 font-normal tracking-[0.5px] text-center">
+                        Delete is not reversable and the story will be completely
+                        deleted. If you dont want to delete, you can
+                      </p>
                     </div>
                     <div className="flex gap-6 justify-center">
 
-                    
-                    <Button
-                      style={{
-                        color: "#DC4550",
-                        borderColor: "#DC4550",
-                        borderWidth: "1px",
-                        padding: "20px 40px 20px 40px",
-                        borderRadius: "16px",
-                        fontWeight: 600,
-                        fontSize: "16PX",
-                        lineHeight: "20px",
-                        fontStyle: "normal",
-                        textTransform: "capitalize",
-                      }}
-                      variant="outlined"
-                      onClick={handleDeleteClose}
-                    >
-                      Cancel
-                    </Button>
-                    <Button
-                      style={{
-                        background: "#DC4550",
-                        color: "#fff",
-                        padding: "20px 40px 20px 40px",
-                        borderRadius: "16px",
-                        fontWeight: 600,
-                        fontSize: "16PX",
-                        lineHeight: "20px",
-                        fontStyle: "normal",
-                        textTransform: "capitalize",
-                      }}
-                      variant="contained"
-                      onClick={handleClose}
-                      autoFocus
-                    >
-                      Delete
-                    </Button>
+
+                      <Button
+                        style={{
+                          color: "#DC4550",
+                          borderColor: "#DC4550",
+                          borderWidth: "1px",
+                          padding: "20px 40px 20px 40px",
+                          borderRadius: "16px",
+                          fontWeight: 600,
+                          fontSize: "16PX",
+                          lineHeight: "20px",
+                          fontStyle: "normal",
+                          textTransform: "capitalize",
+                        }}
+                        variant="outlined"
+                        onClick={handleDeleteClose}
+                      >
+                        Cancel
+                      </Button>
+                      <Button
+                        style={{
+                          background: "#DC4550",
+                          color: "#fff",
+                          padding: "20px 40px 20px 40px",
+                          borderRadius: "16px",
+                          fontWeight: 600,
+                          fontSize: "16PX",
+                          lineHeight: "20px",
+                          fontStyle: "normal",
+                          textTransform: "capitalize",
+                        }}
+                        variant="contained"
+                        onClick={handleClose}
+                        autoFocus
+                      >
+                        Delete
+                      </Button>
                     </div>
                   </div>
                 </div>
