@@ -1,8 +1,9 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Editor from "../../components/Editor";
 import Select from "react-select";
-import {useLocation} from 'react-router-dom'
-
+import { saveBlog } from "../../redux/slices/blogsSlice";
+import { useLocation } from "react-router-dom";
+import { useDispatch } from "react-redux";
 
 const departmentsOptions = [
   { value: "UX/UI Design", label: "UX/UI Design" },
@@ -44,9 +45,14 @@ const DEFAULT_INITIAL_DATA = {
 
 const Form = () => {
   const [postData, setPostData] = useState({});
-  const { search } = useLocation()  
-  const query = new URLSearchParams(search)
-  const flag = query.get('flag')
+  const { search } = useLocation();
+  const query = new URLSearchParams(search);
+  const flag = query.get("flag");
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(saveBlog(postData));
+  }, [postData]);
 
   const handleEditorData = (data) => {
     console.log("content", data);
@@ -56,10 +62,6 @@ const Form = () => {
   const handleChange = (event) => {
     const { name, value } = event.target;
     setPostData((prev) => ({ ...prev, [name]: value }));
-  };
-
-  const handleSelect = (data, name) => {
-    setPostData((prev) => ({ ...prev, [name]: data }));
   };
 
   return (
@@ -92,7 +94,10 @@ const Form = () => {
           classNamePrefix="Select Departments"
         /> */}
         <div className="w-full flex items-center max-w-5xl">
-          <Editor handleChange={handleEditorData} data={flag === 'edit' ? DEFAULT_INITIAL_DATA : {}} />
+          <Editor
+            handleChange={handleEditorData}
+            data={flag === "edit" ? DEFAULT_INITIAL_DATA : {}}
+          />
         </div>
       </div>
     </div>

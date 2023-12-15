@@ -1,16 +1,18 @@
 import LoginForm from "../../components/LoginForm";
 import BackgroundImage from "../../assets/images/Working Icon.png";
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router";
+import { useLocation, useNavigate } from "react-router";
 import { useDispatch, useSelector } from "react-redux";
 import {
   getAuth,
   signInWithEmailAndPassword,
   GoogleAuthProvider,
   signInWithPopup,
+  createUserWithEmailAndPassword,
 } from "@firebase/auth";
 import { login, logout } from "../../redux/slices/authSlice";
 import { Snackbar } from "@mui/base";
+import { addUser } from "../../redux/slices/authSlice";
 
 const Login = () => {
   // const [state, setState] = useState({
@@ -23,6 +25,7 @@ const Login = () => {
   const dispatch = useDispatch();
   const auth = getAuth();
   const uid = useSelector((state) => state.authReducer.uid);
+  const location = useLocation();
 
   const handleGoogleSignIn = async (event) => {
     event.preventDefault();
@@ -35,7 +38,16 @@ const Login = () => {
       // The signed-in user info.
       const user = result.user;
       if (user) {
-        dispatch(login(user.uid));
+        dispatch(
+          login({
+            uid: user.uid,
+            name: user.email.split("@").at(0),
+            email: user.email,
+          })
+        );
+        dispatch(
+          addUser({ name: user.email.split("@").at(0), email: user.email })
+        );
         console.log("user sso", user);
         navigate("/");
       }
@@ -59,7 +71,41 @@ const Login = () => {
         // Signed in
         const user = userCredential.user;
         console.log("user", user);
-        dispatch(login(user.uid));
+        if (user) {
+          dispatch(
+          login({
+            uid: user.uid,
+            name: user.email.split("@").at(0),
+            email: user.email,
+          })
+        );
+          navigate("/");
+        }
+        setMessage("Registered successfully");
+        setShowSnackBar(true);
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        setMessage(errorMessage);
+        setShowSnackBar(true);
+        dispatch(logout());
+      });
+  };
+
+  const handleRegister = async (email, password) => {
+    console.log("handleRegister");
+    createUserWithEmailAndPassword(auth, email, password)
+      .then((userCredential) => {
+        // Signed up
+        const user = userCredential.user;
+        dispatch(
+          login({
+            uid: user.uid,
+            name: user.email.split("@").at(0),
+            email: user.email,
+          })
+        );
         setMessage("Registered successfully");
         setShowSnackBar(true);
         navigate("/");
@@ -70,6 +116,7 @@ const Login = () => {
         setMessage(errorMessage);
         setShowSnackBar(true);
         dispatch(logout());
+        // ..
       });
   };
 
@@ -104,6 +151,7 @@ const Login = () => {
       >
         <LoginForm
           handleLogin={handleLogin}
+          handleRegister={handleRegister}
           handleGoogleSignIn={handleGoogleSignIn}
         />
       </div>
