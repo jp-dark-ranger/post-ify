@@ -6,9 +6,11 @@ import CloseIcon from "@mui/icons-material/Close";
 import sampleImg from "../../assets/images/sample.jpg";
 import Button from "@mui/material/Button";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
-
+import CommentIcon from "@mui/icons-material/Comment";
 import Avatar from "@mui/material/Avatar";
-import Chip from "@mui/material/Chip";
+import Chip from '@mui/material/Chip';
+import {useNavigate} from 'react-router-dom'
+
 import MoreVertIcon from "@mui/icons-material/MoreVert";
 
 // delete ui material
@@ -19,15 +21,15 @@ import Box from "@mui/material/Box";
 // import Button from '@mui/material/Button';
 import Typography from "@mui/material/Typography";
 import Modal from "@mui/material/Modal";
-import { useNavigate } from "react-router-dom";
 
 const ProfileCard = ({}) => {
-  
+  const [edit, setEdit] = useState(false);
   const [isDeleteModal, setisDeleteModal] = useState(false);
   const handleDeleteClose = () => {
     setisDeleteModal(false);
   };
   //   console.log(data);
+  const navigate = useNavigate()
   const handleLike = () => {
     console.log("like clicked works");
   };
@@ -37,12 +39,6 @@ const ProfileCard = ({}) => {
     console.log("clicked outside");
   };
 
-  
-
-  window.addEventListener("scroll", () => {
-    console.log("scroll");
-    if (edit) setEdit(false);
-  });
   // delete functions
   const [open, setOpen] = React.useState(false);
 
@@ -51,7 +47,7 @@ const ProfileCard = ({}) => {
   };
 
   const handleClose = () => {
-    setOpen(false);
+    setisDeleteModal(false)
   };
   const style = {
     position: "absolute",
@@ -67,28 +63,26 @@ const ProfileCard = ({}) => {
     borderRadius:6
   };
 
-  const [edit, setEdit] = useState(false);
-  const navigate = useNavigate()
 
   const handleEdit = ()=>{
+    setEdit(false)
     navigate('/form?flag=edit')
+  }
+
+  const navigateToViewPage = (id,e) => {
+    e.stopPropagation()
+    navigate('/view-post/'+ id)
+    // navigate('/form?flag=edit')
   }
 
   return (
     <>
-      <div
-        className="flex gap-4 w-full border-b-2 
-       border-inherit rounded-xl justify-center px-[20px] py-[40px] font-sans relative"
-        onClick={() => {
-          setEdit(false);
-        }}
-      >
+      <div className="flex gap-4 w-full border-b-2  border-inherit rounded-xl justify-center px-[20px] py-[40px] font-sans cursor-pointer relative" onClick={()=>navigateToViewPage(1)}>
         {/* contents */}
         <MoreVertIcon
           className="absolute top-[16px] right-[22px]  cursor-pointer"
-          onClick={(e) => {
+          onClick={(e) => { 
             e.stopPropagation();
-            console.log("jiii");
             setEdit(!edit);
           }}
         />
