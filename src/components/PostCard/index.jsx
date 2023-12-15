@@ -187,7 +187,7 @@ const ProfileCard = ({ }) => {
                 {pathname === '/profile' &&
                   <>
                   <EditIcon className="absolute top-[16px] right-[22px]  cursor-pointer" onClick={(e) => {e.stopPropagation(); navigate('/form?flag=edit')}}/>
-                  <DeleteIcon className="absolute top-[16px] right-[44px]  cursor-pointer" onClick={(e) => { e.stopPropagation(); setisDeleteModal(true)}} />
+                  <DeleteIcon className="absolute top-[16px] right-[60px]  cursor-pointer" onClick={(e) => { e.stopPropagation(); setisDeleteModal(true)}} />
 
                     {/* <MoreVertIcon
           className="absolute top-[16px] right-[22px]  cursor-pointer"
@@ -274,7 +274,7 @@ const ProfileCard = ({ }) => {
                           textTransform: "capitalize",
                         }}
                         variant="contained"
-                        onClick={handleClose}
+                        onClick={()=>setisDeleteModal(false)}
                         autoFocus
                       >
                         Delete
