@@ -9,6 +9,12 @@ import FilterSection from "../../components/FilterSection";
 
 const Layout = () => {
   const [cards, setCards] = useState([1, 2, 3, 4, 5, 6, 7, 8, 9]);
+  const [edit, setEdit] = useState(false)
+
+  const onOptionsButtonClick = () => {
+    setEdit(edit => !edit)
+  }
+
   return (
     <div>
       <div className="w-full flex">
@@ -17,7 +23,7 @@ const Layout = () => {
             {/* <PostCard/>
                <PostCard/> */}
             {cards.map((res) => {
-              return <PostCard />;
+              return <PostCard  onClick={onOptionsButtonClick} edit={edit} />;
             })}
           </div>
         </div>

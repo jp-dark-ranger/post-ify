@@ -5,16 +5,20 @@ import DriveFileRenameOutlineIcon from "@mui/icons-material/DriveFileRenameOutli
 import NotificationsNoneIcon from "@mui/icons-material/NotificationsNone";
 import Pagination from "@mui/material/Pagination";
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+import Button from '@mui/material/Button';
+// import SearchIcon from '@mui/icons-material/Search';
+import logo from "../../assets/images/Logo.png"
 
 const Header = () => {
   return (
     // <div className="">
       <div className="flex justify-between items-center h-24 py-0 px-[24px]  border-b border-[#eee] sticky top-0 bg-white z-50">
-        <div className="flex items-center gap-4">
-          <div>
-           <AccountCircleIcon/>
-          </div>
-          <div className="flex w-[240px] bg-[#F9F9F9] items-center rounded-[20px]">
+        
+        <div>
+<img src={logo} alt="Logo" />
+        </div>
+        <div>
+        <div className="flex w-[240px] bg-[#F9F9F9] items-center rounded-[20px]">
             <div>
               <SearchIcon  />
             </div>
@@ -23,21 +27,10 @@ const Header = () => {
             </div>
           </div>
         </div>
-        <div className="flex gap-[25px]">
-          <div className="flex gap-3">
-            <div>
-              <DriveFileRenameOutlineIcon />
-            </div>
-            <div>
-              <p>Write</p>
-            </div>
-          </div>
-          <div className="">
-            <NotificationsNoneIcon sx={{height:24}} />
-          </div>
-          <div className=" h-[32px] w-[32px] rounded-full border-2 border-black " onClick={()=>{
-            console.log("profile icon");
-          }}></div>
+        <div>
+        <Button variant="contained" endIcon={<SearchIcon />}>
+        Send
+      </Button>
         </div>
       </div>
     // </div>

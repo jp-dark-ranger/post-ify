@@ -1,54 +1,124 @@
 import React, { useState } from "react";
-// import { useRef } from 'react'
-// import { useOnClickOutside } from 'usehooks-ts'
 
-import AccountCircleIcon from "@mui/icons-material/AccountCircle";
+import { useOnClickOutside } from "usehooks-ts";
+import CloseIcon from "@mui/icons-material/Close";
+
 import sampleImg from "../../assets/images/sample.jpg";
 import Button from "@mui/material/Button";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
-import CommentIcon from "@mui/icons-material/Comment";
+
 import Avatar from "@mui/material/Avatar";
 import Chip from "@mui/material/Chip";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
 
+// delete ui material
+// import Button from '@mui/material/Button';
+
+
+import Box from "@mui/material/Box";
+// import Button from '@mui/material/Button';
+import Typography from "@mui/material/Typography";
+import Modal from "@mui/material/Modal";
+
 const ProfileCard = ({}) => {
+  
+  const [isDeleteModal, setisDeleteModal] = useState(false);
+  const handleDeleteClose = () => {
+    setisDeleteModal(false);
+  };
   //   console.log(data);
   const handleLike = () => {
     console.log("like clicked works");
   };
-  const handleComments = () => {
-    console.log("comments clicked works");
+
+  const handleClickOutside = () => {
+    // Your custom logic here
+    console.log("clicked outside");
   };
 
-  const fullCardHandle = () => {
-    console.log("The Whole Div  ");
+  
+
+  window.addEventListener("scroll", () => {
+    console.log("scroll");
+    if (edit) setEdit(false);
+  });
+  // delete functions
+  const [open, setOpen] = React.useState(false);
+
+  const handleOpen = () => {
+    setOpen(true);
   };
 
-  // window.addEventListener('click',()=>{
-  //   if(edit) setEdit(false)
-  // })
+  const handleClose = () => {
+    setOpen(false);
+  };
+  const style = {
+    position: "absolute",
+    top: "50%",
+    left: "50%",
+    transform: "translate(-50%, -50%)",
+    width: 760,
+    height: 428,
+    bgcolor: "background.paper",
+    border: "2px solid #000",
+    boxShadow: 24,
+    p: 4,
+    borderRadius:6
+  };
+
   const [edit, setEdit] = useState(false);
 
   return (
     <>
-      <div className="flex gap-4 w-full border-b-2 
-       border-inherit rounded-xl justify-center px-[20px] py-[40px] font-sans relative" onClick={()=>{
-        setEdit(false)
-       }}>
+      <div
+        className="flex gap-4 w-full border-b-2 
+       border-inherit rounded-xl justify-center px-[20px] py-[40px] font-sans relative"
+        onClick={() => {
+          setEdit(false);
+        }}
+      >
         {/* contents */}
         <MoreVertIcon
-          className="absolute top-[16px] right-[22px] "
+          className="absolute top-[16px] right-[22px]  cursor-pointer"
           onClick={(e) => {
             e.stopPropagation();
             console.log("jiii");
-            setEdit(true);
+            setEdit(!edit);
           }}
         />
         {edit && edit ? (
-          <div className=" absolute top[0px] right[22px] w-[200px] rounded-[4px]
-          shadow-md bg-[#FFF] inline-flex flex-col gap-0.5 right-[31px]">
-            <p className="h-[56px] py-2 px-3 text-[#424242] text-[16px] font-normal border-[#424242]">Edit</p>
-            <p className="h-[56px] py-2 px-3 text-[#424242] text-[16px] font-normal">Delete</p>
+          <div
+            className=" absolute top[0px] right[22px] w-[200px] rounded-[4px]
+          shadow-md bg-[#FFF] inline-flex flex-col gap-0.5 right-[31px] cursor-pointer"
+          >
+            <Button
+              className="h-[56px] py-2 px-3 text-[#424242] text-[16px] font-normal
+             border-[#424242]"
+              style={{ color: "#424242", borderWidth: 1, border: "#424242" }}
+              variant="outlined"
+            >
+              Edit
+            </Button>
+            <Button
+              className="h-[56px] py-2 px-3 text-[#424242] text-[16px] font-normal
+              border-[#424242]"
+              style={{
+                color: "#424242",
+                borderWidth: 0.5,
+                border: "#424242",
+                fontSize: "16",
+                fontWeight: "400",
+              }}
+              variant="outlined"
+              onClick={() => {
+                setEdit(false);
+                setOpen(true);
+                setisDeleteModal(true);
+              }}
+            >
+              Delete
+            </Button>
+
           </div>
         ) : (
           ""
@@ -129,7 +199,83 @@ const ProfileCard = ({}) => {
             </div>
           </div>
         </div>
+       
+
+        <div>
+          
+          <Modal
+            open={isDeleteModal}
+            onClose={handleDeleteClose}
+            aria-labelledby="modal-modal-title"
+            aria-describedby="modal-modal-description"
+          >
+            <Box sx={style}>
+              <div className="flex w-full h-full flex-col items-center">
+                <div className="flex w-full justify-end ">
+                  <CloseIcon
+                    onClick={handleDeleteClose}
+                    style={{ margin: "11px 13px 0px 0px", cursor: "pointer" }}
+                  />
+                </div>
+                <div className="flex w-[80%]  mt-[39px] items-center justify-center">
+                  <div className="flex flex-col gap-6 justify-center">
+                    <div className="flex flex-col gap-4 justify-center">
+
+                    <h3 className="text-[#000] text-[24px] font-bold leading-6 text-center">Delete Story</h3>
+                    <p className="text-[16px] text-[#000] leading-6 font-normal tracking-[0.5px] text-center">
+                      Delete is not reversable and the story will be completely
+                      deleted. If you dont want to delete, you can
+                    </p>
+                    </div>
+                    <div className="flex gap-6 justify-center">
+
+                    
+                    <Button
+                      style={{
+                        color: "#DC4550",
+                        borderColor: "#DC4550",
+                        borderWidth: "1px",
+                        padding: "20px 40px 20px 40px",
+                        borderRadius: "16px",
+                        fontWeight: 600,
+                        fontSize: "16PX",
+                        lineHeight: "20px",
+                        fontStyle: "normal",
+                        textTransform: "capitalize",
+                      }}
+                      variant="outlined"
+                      onClick={handleClose}
+                    >
+                      Cancel
+                    </Button>
+                    <Button
+                      style={{
+                        background: "#DC4550",
+                        color: "#fff",
+                        padding: "20px 40px 20px 40px",
+                        borderRadius: "16px",
+                        fontWeight: 600,
+                        fontSize: "16PX",
+                        lineHeight: "20px",
+                        fontStyle: "normal",
+                        textTransform: "capitalize",
+                      }}
+                      variant="contained"
+                      onClick={handleClose}
+                      autoFocus
+                    >
+                      Delete
+                    </Button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </Box>
+          </Modal>
+        </div>
       </div>
+
+      {/* delete function */}
     </>
   );
 };
