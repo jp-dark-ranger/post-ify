@@ -3,6 +3,7 @@ import Header from "./components/Header/Header";
 import Layout from "./pages/Layout";
 import ViewPost from "./pages/ViewPost";
 import Form from "./pages/Form";
+import Profile from "./pages/Profile/profile";
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
             <Route path="/" element={<Layout />} />
             <Route path="/view-post/:id" element={<ViewPost />} />
             <Route path="/form" element={<Form />} />
+            <Route path="/Profile" element={<Profile/>} />
           </Routes>
         </Router>
       </div>
