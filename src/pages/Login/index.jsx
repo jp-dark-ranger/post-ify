@@ -12,6 +12,7 @@ import {
 } from "@firebase/auth";
 import { login, logout } from "../../redux/slices/authSlice";
 import { Snackbar } from "@mui/base";
+import { addUser } from "../../redux/slices/authSlice";
 
 const Login = () => {
   // const [state, setState] = useState({
@@ -37,7 +38,16 @@ const Login = () => {
       // The signed-in user info.
       const user = result.user;
       if (user) {
-        dispatch(login(user.uid));
+        dispatch(
+          login({
+            uid: user.uid,
+            name: user.email.split("@").at(0),
+            email: user.email,
+          })
+        );
+        dispatch(
+          addUser({ name: user.email.split("@").at(0), email: user.email })
+        );
         console.log("user sso", user);
         navigate("/");
       }

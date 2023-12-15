@@ -1,12 +1,14 @@
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
 import tasksReducer from "./slices/taskSlice";
 import authReducer from "./slices/authSlice";
+import blogsReducer from "./slices/blogsSlice";
 import { persistReducer, persistStore } from "redux-persist";
 import storage from "redux-persist/lib/storage";
 
 const rootReducer = combineReducers({
   tasksReducer,
   authReducer,
+  blogsReducer,
 });
 
 const persistConfig = {
